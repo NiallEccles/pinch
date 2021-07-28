@@ -1,0 +1,18 @@
+{
+  "name": "pinch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "electron ./index.js"
+  },
+  "keywords": [],
+  "author": "Niall Eccles",
+  "license": "ISC",
+  "dependencies": {
+    "electron-color-picker": "^0.2.0"
+  },
+  "devDependencies": {
+    "electron": "^13.1.7"
+  }
+}
