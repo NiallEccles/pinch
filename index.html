@@ -13,17 +13,24 @@
       content="default-src 'self'; script-src 'self'"
     />
     <title>Hello World!</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <h1>Hello World!</h1>
-    <button class="picker1-button">Select Colour</button>
-    <button class="picker2-button">Select Colour</button>
-    <div class="picker1"></div>
-    <div class="picker2"></div>
-    We are using Node.js <span id="node-version"></span>, Chromium
-    <span id="chrome-version"></span>, and Electron
-    <span id="electron-version"></span>.
+    <div class="inputs">
+      <div class="picker-inner">
+        <button class="picker picker1-button">
+          <img src="./assets/icons/color-picker-outline.svg" alt="" />
+        </button>
+        <div class="hex picker1"></div>
+      </div>
+
+      <div class="picker-inner">
+        <button class="picker picker2-button">
+          <img src="./assets/icons/color-picker-outline.svg" alt="" />
+        </button>
+        <div class="hex picker2"></div>
+      </div>
+    </div>
     <script src="./renderer.js"></script>
   </body>
 </html>

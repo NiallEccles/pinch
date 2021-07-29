@@ -10,5 +10,6 @@ window.api.receive("fromMain", (data) => {
   console.log(`Received ${data} from main process`);
   console.log(data);
   document.querySelector(`.${data.for}`).style.backgroundColor = data.colour;
+  document.querySelector(`.${data.for}`).innerHTML = data.colour;
 });
 // window.api.send("toMain", "some data");
