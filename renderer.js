@@ -9,7 +9,13 @@ document.querySelector(".picker2-button").addEventListener("click", () => {
 window.api.receive("fromMain", (data) => {
   console.log(`Received ${data} from main process`);
   console.log(data);
-  document.querySelector(`.${data.for}`).style.backgroundColor = data.colour;
+  let root = document.documentElement;
+  if(data.for === 'picker1'){
+    document.querySelector('body').style.backgroundColor = data.colour;
+    root.style.setProperty('--bg-colour', data.colour);
+  } else {
+    root.style.setProperty('--text-colour', data.colour);
+  }
   document.querySelector(`.${data.for}`).innerHTML = data.colour;
 });
 // window.api.send("toMain", "some data");

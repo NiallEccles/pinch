@@ -1,36 +1,59 @@
-/* div{
-    padding:1em;
-} */
-
-.inputs{
-    display: flex;
+@font-face {
+  font-family: "JakartaSans - Regular";
+  src: url("./assets//fonts/PlusJakartaSans-Regular.woff2");
 }
 
-.picker{
-    padding: 0 0.4em;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.5);
-    border-radius: 0.3em;
-    margin-right: 0.5em;
+@font-face {
+  font-family: "JakartaSans - Bold";
+  src: url("./assets//fonts/PlusJakartaSans-Bold.woff2");
 }
 
-.picker img{
-    width: 1.5em;
+:root {
+  --bg-colour: #fffa66;
+  --text-colour: #142842;
 }
 
-.picker-inner{
-    display: flex;
-    margin-right: 0.4em;
+body {
+  font-family: "JakartaSans - Regular";
+  background: var(--bg-colour);
+  padding: 0;
 }
 
-.hex{
-    background: white;
-    height: 1.2em;
-    min-width: 4em;
-    padding: 0 0.4em;
-    border: 1px solid rgba(255,255,255,0.5);
-    border-radius: 0.3em;
+.inputs {
+  display: flex;
+}
+
+.rating {
+  font-family: "JakartaSans - Bold";
+  color: var(--text-colour);
+  padding: 0 0.5em;
+}
+
+.picker {
+  padding: 0 0.4em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-colour);
+  border: 2px solid rgb(0, 0, 0, 1);
+  border-radius: 0.3em;
+  margin-right: 0.5em;
+}
+
+.picker img {
+  width: 1.5em;
+}
+
+.picker-inner {
+  display: flex;
+  margin-right: 0.4em;
+}
+
+.hex {
+  background: var(--bg-colour);
+  height: 1.3em;
+  min-width: 4em;
+  padding: 0 0.4em;
+  border: 2px solid rgb(0, 0, 0, 1);
+  border-radius: 0.3em;
 }
