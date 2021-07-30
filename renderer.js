@@ -1,21 +1,46 @@
+const getProp = (propName) =>
+  document.documentElement.style.getPropertyValue(propName);
+
+const setProp = (propName, value) =>
+  document.documentElement.style.setProperty(propName, value);
+
 document.querySelector(".picker1-button").addEventListener("click", () => {
-  window.api.send("toMain", { type: "picker1" });
+  const colour1 = getProp("--bg-colour");
+  const colour2 = getProp("--text-colour");
+  window.api.send("pickColour", {
+    type: "picker1",
+    colours: { colour1, colour2 },
+  });
 });
 
 document.querySelector(".picker2-button").addEventListener("click", () => {
-  window.api.send("toMain", { type: "picker2" });
+  const colour1 = getProp("--bg-colour");
+  const colour2 = getProp("--text-colour");
+  window.api.send("pickColour", {
+    type: "picker2",
+    colours: { colour1, colour2 },
+  });
 });
 
-window.api.receive("fromMain", (data) => {
+window.api.receive("sendColour", (data) => {
   console.log(`Received ${data} from main process`);
   console.log(data);
-  let root = document.documentElement;
-  if(data.for === 'picker1'){
-    document.querySelector('body').style.backgroundColor = data.colour;
-    root.style.setProperty('--bg-colour', data.colour);
+  if (data.for === "picker1") {
+    document.querySelector("body").style.backgroundColor = data.colour;
+    setProp("--bg-colour", data.colour);
   } else {
-    root.style.setProperty('--text-colour', data.colour);
+    setProp("--text-colour", data.colour);
   }
+
+  const colour1 = getProp("--bg-colour");
+  const colour2 = getProp("--text-colour");
+  window.api.send("requestWCAG", {
+    colours: { colour1, colour2 },
+  });
+
   document.querySelector(`.${data.for}`).innerHTML = data.colour;
 });
-// window.api.send("toMain", "some data");
+
+window.api.receive("WCAGresults", (data) => {
+  console.log(data);
+});

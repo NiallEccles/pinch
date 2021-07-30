@@ -5,6 +5,8 @@ const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const fs = require("fs");
 
+const WCAG = require("./utils/calcWCAG");
+
 let win;
 
 const getColour = require("./getColour");
@@ -51,18 +53,23 @@ app.on("window-all-closed", function () {
   if (process.platform !== "darwin") app.quit();
 });
 
-ipcMain.on("toMain", (event, args) => {
-  console.log(args);
+ipcMain.on("pickColour", (event, args) => {
   if (args.type === "picker1") {
     getColour().then((colour) => {
-      win.webContents.send("fromMain", { for: "picker1", colour });
+      win.webContents.send("sendColour", { for: "picker1", colour });
     });
   } else if (args.type === "picker2") {
     getColour().then((colour) => {
-      win.webContents.send("fromMain", { for: "picker2", colour });
+      win.webContents.send("sendColour", { for: "picker2", colour });
     });
   }
   // win.webContents.send("fromMain", "yo");
   // fs.readFile("path/to/file", (error, data) => {
   // });
+});
+
+ipcMain.on("requestWCAG", (event, args) => {
+  const results = WCAG.calcWCAG(args.colours.colour1, args.colours.colour2);
+  console.log(results);
+  win.webContents.send("WCAGresults", { results });
 });
