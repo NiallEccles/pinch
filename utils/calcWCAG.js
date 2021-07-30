@@ -46,13 +46,7 @@ module.exports = {
     }
 
     const ratio = calculateRatio();
-    // show results depending on WCAG requirements
-    const result = `
-    AA-level large text: ${ratio < 1 / 3 ? "PASS" : "FAIL"}<br>
-    AA-level small text: ${ratio < 1 / 4.5 ? "PASS" : "FAIL"}<br>
-    AAA-level large text: ${ratio < 1 / 4.5 ? "PASS" : "FAIL"}<br>
-    AAA-level small text: ${ratio < 1 / 7 ? "PASS" : "FAIL"}
-    `;
+
     return {
       aa: [
         { name: "AA-level large text", grade: ratio < 1 / 3 ? "PASS" : "FAIL" },

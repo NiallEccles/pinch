@@ -8,6 +8,10 @@ window.addEventListener("DOMContentLoaded", () => {
   document.querySelector(`.picker1`).value = "#fffa66";
   document.documentElement.style.setProperty("--text-colour", "#142842");
   document.querySelector(`.picker2`).value = "#142842";
+
+  document.querySelector(".rating").innerHTML = "AAA";
+  document.querySelector("#multiple").style.display = "initial";
+  document.querySelector("#single").style.display = "none";
 });
 
 const { contextBridge, ipcRenderer } = require("electron");

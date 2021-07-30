@@ -8,25 +8,43 @@
   src: url("./assets//fonts/PlusJakartaSans-Bold.woff2");
 }
 
+@font-face {
+  font-family: "JakartaSans - Medium";
+  src: url("./assets//fonts/PlusJakartaSans-Medium.woff2");
+}
+
 :root {
   --bg-colour: "";
   --text-colour: "";
+  /* https://pigment.shapefactory.co/?a=FFFA66&b=142842 */
 }
 
 body {
-  font-family: "JakartaSans - Regular";
+  font-family: "JakartaSans - Medium";
   background: var(--bg-colour);
   padding: 0;
 }
 
 .inputs {
   display: flex;
+  align-items: center;
 }
 
 .rating {
   font-family: "JakartaSans - Bold";
   color: var(--text-colour);
   padding: 0 0.5em;
+}
+
+.rating-icon {
+  width: 1.5em;
+  display: flex;
+  margin-right: 0.5em;
+}
+
+.rating-icon .single,
+.rating-icon .multiple {
+  width: 1.5em;
 }
 
 .picker {
@@ -60,7 +78,7 @@ body {
 
 input.hex {
   width: 5em;
-  font-family: "JakartaSans - Regular";
+  font-family: "JakartaSans - Medium";
   font-size: 1em;
   text-transform: uppercase;
 }
