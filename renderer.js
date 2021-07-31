@@ -47,7 +47,7 @@ window.api.receive("sendColour", (data) => {
 
 window.api.receive("WCAGresults", (data) => {
   setProp("--controls-colour", data.results.textColour);
-  const wcag = { aa: true, aaa: false };
+  const wcag = { aa: false, aaa: false };
   for (let i = 0; i < data.results.aa.length; i++) {
     const aa = data.results.aa[i];
     if (aa.grade === "PASS") wcag.aa = true;
@@ -57,16 +57,21 @@ window.api.receive("WCAGresults", (data) => {
     const aaa = data.results.aaa[i];
     if (aaa.grade === "PASS") wcag.aaa = true;
   }
-
-  if (wcag.aa && !wcag.aaa) {
-    document.querySelector(".rating").innerHTML = "AA";
-    document.querySelector("#multiple").style.display = "none";
-    document.querySelector("#single").style.display = "initial";
-  } else if (wcag.aa && wcag.aaa) {
+  console.log(wcag);
+  if (wcag.aaa) {
     document.querySelector(".rating").innerHTML = "AAA";
     document.querySelector("#multiple").style.display = "initial";
     document.querySelector("#single").style.display = "none";
+    document.querySelector("#fail").style.display = "none";
+  } else if (wcag.aa) {
+    document.querySelector(".rating").innerHTML = "AA";
+    document.querySelector("#multiple").style.display = "none";
+    document.querySelector("#single").style.display = "initial";
+    document.querySelector("#fail").style.display = "none";
   } else if (!wcag.aa && !wcag.aaa) {
-    document.querySelector(".rating").innerHTML = "";
+    document.querySelector(".rating").innerHTML = "A";
+    document.querySelector("#single").style.display = "none";
+    document.querySelector("#multiple").style.display = "none";
+    document.querySelector("#fail").style.display = "initial";
   }
 });

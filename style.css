@@ -60,7 +60,7 @@ body {
 
 .close {
   width: 0.8em;
-  background: #E24F4E;
+  background: #e24f4e;
   border-radius: 1em;
   display: flex;
   fill: rgba(0, 0, 0, 0);
@@ -80,8 +80,13 @@ body {
 }
 
 .rating-icon .single,
-.rating-icon .multiple {
+.rating-icon .multiple,
+.rating-icon .fail {
   width: 1.5em;
+}
+
+.rating-icon #fail {
+  display: none;
 }
 
 .picker {
