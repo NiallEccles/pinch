@@ -24,6 +24,7 @@ body {
   font-family: "JakartaSans - Medium";
   background: var(--bg-colour);
   padding: 0;
+  margin: 0;
 }
 
 .inputs {
@@ -35,6 +36,40 @@ body {
   font-family: "JakartaSans - Bold";
   color: var(--text-colour);
   padding: 0 0.5em;
+}
+
+.frame {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.4em;
+}
+
+.title {
+  font-size: 0.5em;
+  flex: 1;
+  text-align: center;
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+}
+
+.title h1 {
+  margin: 0;
+  color: var(--controls-colour);
+}
+
+.close {
+  width: 0.8em;
+  background: #E24F4E;
+  border-radius: 1em;
+  display: flex;
+  fill: rgba(0, 0, 0, 0);
+  transition: fill 100ms ease-in-out;
+}
+
+.close:hover {
+  fill: rgba(0, 0, 0, 0.7);
+  transition: fill 100ms ease-in-out;
 }
 
 .rating-icon {

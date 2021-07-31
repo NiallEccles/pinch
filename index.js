@@ -18,7 +18,10 @@ function createWindow() {
     width: 800,
     height: 600,
     minWidth: 389,
-    minHeight: 65,
+    minHeight: 70,
+    maximizable: false,
+    alwaysOnTop: true,
+    frame: false,
     webPreferences: {
       nodeIntegration: false,
       enableRemoteModule: false,
@@ -77,4 +80,8 @@ ipcMain.on("requestWCAG", (event, args) => {
     textColour: calcTextColour(args.colours.colour1),
   };
   win.webContents.send("WCAGresults", { results });
+});
+
+ipcMain.on("requestClose", () => {
+  app.quit();
 });

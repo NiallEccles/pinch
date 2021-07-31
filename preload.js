@@ -27,7 +27,7 @@ const { contextBridge, ipcRenderer } = require("electron");
 contextBridge.exposeInMainWorld("api", {
   send: (channel, data) => {
     // whitelist channels
-    let validChannels = ["pickColour", "requestWCAG"];
+    let validChannels = ["pickColour", "requestWCAG", "requestClose"];
     if (validChannels.includes(channel)) {
       ipcRenderer.send(channel, data);
     }

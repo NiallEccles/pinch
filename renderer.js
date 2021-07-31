@@ -22,6 +22,10 @@ document.querySelector(".picker2-button").addEventListener("click", () => {
   });
 });
 
+document.querySelector(".close").addEventListener("click", () => {
+  window.api.send("requestClose");
+});
+
 window.api.receive("sendColour", (data) => {
   console.log(`Received ${data} from main process`);
   console.log(data);
