@@ -42,7 +42,7 @@ window.api.receive("sendColour", (data) => {
 });
 
 window.api.receive("WCAGresults", (data) => {
-  setProp("--controls-colour", data.results.textColour)
+  setProp("--controls-colour", data.results.textColour);
   const wcag = { aa: true, aaa: false };
   for (let i = 0; i < data.results.aa.length; i++) {
     const aa = data.results.aa[i];
