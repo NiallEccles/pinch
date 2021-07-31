@@ -3,12 +3,12 @@
 A WCAG colour accessibility checker built with Electron.
 
 ## Default view
-![Default Screenshot](https://nialleccles-github.s3.eu-west-1.amazonaws.com/default-screenshot.png)
+![Default Screenshot](https://nialleccles-github.s3.eu-west-1.amazonaws.com/default-screenshot.png?)
 
 ## Fail view
-![Fail Screenshot](https://nialleccles-github.s3.eu-west-1.amazonaws.com/fail-screenshot.png)
+![Fail Screenshot](https://nialleccles-github.s3.eu-west-1.amazonaws.com/fail-screenshot.png?)
 ## AA pass view
-![AA Screenshot](https://nialleccles-github.s3.eu-west-1.amazonaws.com/aa-pass-screenshot.png)
+![AA Screenshot](https://nialleccles-github.s3.eu-west-1.amazonaws.com/aa-pass-screenshot.png?)
 
 ## AAA pass view
-![AAA Screenshot](https://nialleccles-github.s3.eu-west-1.amazonaws.com/aaa-pass-screenshot.png)
+![AAA Screenshot](https://nialleccles-github.s3.eu-west-1.amazonaws.com/aaa-pass-screenshot.png?)

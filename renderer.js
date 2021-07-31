@@ -33,9 +33,11 @@ document.querySelector("#layers").addEventListener("click", () => {
 window.api.receive("sendColour", (data) => {
   if (data.for === "picker1") {
     document.querySelector("body").style.backgroundColor = data.colour;
+    document.querySelector(".picker1").value = data.colour;
     setProp("--bg-colour", data.colour);
   } else {
     setProp("--text-colour", data.colour);
+    document.querySelector(".picker2").value = data.colour;
   }
 
   const colour1 = getProp("--bg-colour");
