@@ -1,7 +1,7 @@
 // main.js
 
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, ipcMain } = require("electron");
+const { app, BrowserWindow, ipcMain, Menu } = require("electron");
 const path = require("path");
 const fs = require("fs");
 
@@ -14,11 +14,32 @@ let win;
 
 const getColour = require("./getColour");
 
+const template = [
+  {
+    role: "help",
+    submenu: [
+      {
+        label: "Found a bug?",
+        click: async () => {
+          const { shell } = require("electron");
+          await shell.openExternal(
+            "https://github.com/NiallEccles/pinch/issues"
+          );
+        },
+      },
+    ],
+  },
+];
+
+const menu = Menu.buildFromTemplate(template);
+Menu.setApplicationMenu(menu);
+
 function createWindow() {
   // Create the browser window.
   win = new BrowserWindow({
     // width: 800,
     // height: 600,
+    title: "Pinch",
     width: 400,
     height: 70,
     minWidth: 400,
@@ -60,6 +81,7 @@ app.whenReady().then(() => {
   // send message when webview ready so we can update the UI
   win.webContents.on("did-finish-load", () => {
     let alwaysOnTop = settings.getSync("alwaysOnTop");
+    win.setAlwaysOnTop(alwaysOnTop);
     win.webContents.send("layerToggle", alwaysOnTop);
   });
 });
