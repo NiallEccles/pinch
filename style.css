@@ -34,6 +34,7 @@ body {
 
 .inputs #layers{
   width: 1.5em;
+  fill: var(--controls-colour);
 }
 
 .rating {
