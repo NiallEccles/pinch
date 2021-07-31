@@ -15,8 +15,10 @@ const getColour = require("./getColour");
 function createWindow() {
   // Create the browser window.
   win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    // width: 800,
+    // height: 600,
+    width: 389,
+    height: 70,
     minWidth: 389,
     minHeight: 70,
     maximizable: false,
@@ -36,7 +38,7 @@ function createWindow() {
   win.loadFile("index.html");
 
   // Open the DevTools.
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools();
 }
 
 // This method will be called when Electron has finished
