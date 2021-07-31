@@ -6,6 +6,7 @@ const path = require("path");
 const fs = require("fs");
 
 const WCAG = require("./utils/calcWCAG");
+const { calcTextColour } = require("./utils/calcTextColour");
 
 let win;
 
@@ -69,7 +70,9 @@ ipcMain.on("pickColour", (event, args) => {
 });
 
 ipcMain.on("requestWCAG", (event, args) => {
-  const results = WCAG.calcWCAG(args.colours.colour1, args.colours.colour2);
-  console.log(results);
+  const results = {
+    ...WCAG.calcWCAG(args.colours.colour1, args.colours.colour2),
+    textColour: calcTextColour(args.colours.colour1),
+  };
   win.webContents.send("WCAGresults", { results });
 });

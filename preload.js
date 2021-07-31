@@ -1,13 +1,19 @@
 // preload.js
+const getProp = (propName) =>
+  document.documentElement.style.getPropertyValue(propName);
+
+const setProp = (propName, value) =>
+  document.documentElement.style.setProperty(propName, value);
 
 // All of the Node.js APIs are available in the preload process.
 // It has the same sandbox as a Chrome extension.
 window.addEventListener("DOMContentLoaded", () => {
   console.log("locked and loaded");
-  document.documentElement.style.setProperty("--bg-colour", "#fffa66");
+  setProp("--bg-colour", "#fffa66");
   document.querySelector(`.picker1`).value = "#fffa66";
-  document.documentElement.style.setProperty("--text-colour", "#142842");
+  setProp("--text-colour", "#142842");
   document.querySelector(`.picker2`).value = "#142842";
+  setProp("--controls-colour", "black");
 
   document.querySelector(".rating").innerHTML = "AAA";
   document.querySelector("#multiple").style.display = "initial";

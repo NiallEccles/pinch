@@ -42,6 +42,7 @@ window.api.receive("sendColour", (data) => {
 });
 
 window.api.receive("WCAGresults", (data) => {
+  setProp("--controls-colour", data.results.textColour)
   const wcag = { aa: true, aaa: false };
   for (let i = 0; i < data.results.aa.length; i++) {
     const aa = data.results.aa[i];
@@ -55,12 +56,12 @@ window.api.receive("WCAGresults", (data) => {
 
   if (wcag.aa && !wcag.aaa) {
     document.querySelector(".rating").innerHTML = "AA";
-    document.querySelector("#multiple").style.display = 'none';
-    document.querySelector("#single").style.display = 'initial';
+    document.querySelector("#multiple").style.display = "none";
+    document.querySelector("#single").style.display = "initial";
   } else if (wcag.aa && wcag.aaa) {
     document.querySelector(".rating").innerHTML = "AAA";
-    document.querySelector("#multiple").style.display = 'initial';
-    document.querySelector("#single").style.display = 'none';
+    document.querySelector("#multiple").style.display = "initial";
+    document.querySelector("#single").style.display = "none";
   } else if (!wcag.aa && !wcag.aaa) {
     document.querySelector(".rating").innerHTML = "";
   }

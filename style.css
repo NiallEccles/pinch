@@ -16,6 +16,7 @@
 :root {
   --bg-colour: "";
   --text-colour: "";
+  --controls-colour: "";
   /* https://pigment.shapefactory.co/?a=FFFA66&b=142842 */
 }
 
@@ -40,6 +41,7 @@ body {
   width: 1.5em;
   display: flex;
   margin-right: 0.5em;
+  fill: var(--controls-colour);
 }
 
 .rating-icon .single,
@@ -53,13 +55,14 @@ body {
   align-items: center;
   justify-content: center;
   background: var(--bg-colour);
-  border: 2px solid rgb(0, 0, 0, 1);
+  border: 2px solid var(--controls-colour);
   border-radius: 0.3em;
   margin-right: 0.5em;
 }
 
-.picker img {
+.picker svg {
   width: 1.5em;
+  fill: var(--controls-colour);
 }
 
 .picker-inner {
@@ -72,13 +75,14 @@ body {
   height: 1.3em;
   min-width: 4em;
   padding: 0 0.4em;
-  border: 2px solid rgb(0, 0, 0, 1);
+  border: 2px solid var(--controls-colour);
   border-radius: 0.3em;
 }
 
 input.hex {
   width: 5em;
   font-family: "JakartaSans - Medium";
+  color: var(--controls-colour);
   font-size: 1em;
   text-transform: uppercase;
 }
