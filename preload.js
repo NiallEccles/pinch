@@ -27,13 +27,13 @@ const { contextBridge, ipcRenderer } = require("electron");
 contextBridge.exposeInMainWorld("api", {
   send: (channel, data) => {
     // whitelist channels
-    let validChannels = ["pickColour", "requestWCAG", "requestClose"];
+    let validChannels = ["pickColour", "requestWCAG", "requestClose", "requestLayerToggle"];
     if (validChannels.includes(channel)) {
       ipcRenderer.send(channel, data);
     }
   },
   receive: (channel, func) => {
-    let validChannels = ["sendColour", "WCAGresults"];
+    let validChannels = ["sendColour", "WCAGresults", "layerToggle"];
     if (validChannels.includes(channel)) {
       // Deliberately strip event as it includes `sender`
       ipcRenderer.on(channel, (event, ...args) => func(...args));

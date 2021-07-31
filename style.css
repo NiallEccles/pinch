@@ -32,6 +32,10 @@ body {
   align-items: center;
 }
 
+.inputs #layers{
+  width: 1.5em;
+}
+
 .rating {
   font-family: "JakartaSans - Bold";
   color: var(--text-colour);
@@ -77,12 +81,6 @@ body {
   display: flex;
   margin-right: 0.5em;
   fill: var(--controls-colour);
-}
-
-.rating-icon .single,
-.rating-icon .multiple,
-.rating-icon .fail {
-  width: 1.5em;
 }
 
 .rating-icon #fail {

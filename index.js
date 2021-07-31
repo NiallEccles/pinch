@@ -5,6 +5,8 @@ const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const fs = require("fs");
 
+const settings = require("electron-settings");
+
 const WCAG = require("./utils/calcWCAG");
 const { calcTextColour } = require("./utils/calcTextColour");
 
@@ -17,9 +19,11 @@ function createWindow() {
   win = new BrowserWindow({
     // width: 800,
     // height: 600,
-    width: 389,
+    width: 400,
     height: 70,
-    minWidth: 389,
+    minWidth: 400,
+    maxWidth: 400,
+    maxHeight: 70,
     minHeight: 70,
     maximizable: false,
     alwaysOnTop: true,
@@ -51,6 +55,12 @@ app.whenReady().then(() => {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  });
+
+  // send message when webview ready so we can update the UI
+  win.webContents.on("did-finish-load", () => {
+    let alwaysOnTop = settings.getSync("alwaysOnTop");
+    win.webContents.send("layerToggle", alwaysOnTop);
   });
 });
 
@@ -86,4 +96,17 @@ ipcMain.on("requestWCAG", (event, args) => {
 
 ipcMain.on("requestClose", () => {
   app.quit();
+});
+
+ipcMain.on("requestLayerToggle", () => {
+  let alwaysOnTop = settings.getSync("alwaysOnTop");
+  if (alwaysOnTop) {
+    settings.setSync("alwaysOnTop", false);
+    win.setAlwaysOnTop(false);
+    win.webContents.send("layerToggle", false);
+  } else {
+    settings.setSync("alwaysOnTop", true);
+    win.webContents.send("layerToggle", true);
+    win.setAlwaysOnTop(true);
+  }
 });

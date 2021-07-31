@@ -26,9 +26,11 @@ document.querySelector(".close").addEventListener("click", () => {
   window.api.send("requestClose");
 });
 
+document.querySelector("#layers").addEventListener("click", () => {
+  window.api.send("requestLayerToggle",);
+});
+
 window.api.receive("sendColour", (data) => {
-  console.log(`Received ${data} from main process`);
-  console.log(data);
   if (data.for === "picker1") {
     document.querySelector("body").style.backgroundColor = data.colour;
     setProp("--bg-colour", data.colour);
@@ -57,7 +59,7 @@ window.api.receive("WCAGresults", (data) => {
     const aaa = data.results.aaa[i];
     if (aaa.grade === "PASS") wcag.aaa = true;
   }
-  console.log(wcag);
+
   if (wcag.aaa) {
     document.querySelector(".rating").innerHTML = "AAA";
     document.querySelector("#multiple").style.display = "initial";
@@ -75,3 +77,11 @@ window.api.receive("WCAGresults", (data) => {
     document.querySelector("#fail").style.display = "initial";
   }
 });
+
+window.api.receive("layerToggle", (data) => {
+  if(data){
+    document.querySelector("#layers").style.opacity = '1';
+  } else {
+    document.querySelector("#layers").style.opacity = '0.5';
+  }
+})
