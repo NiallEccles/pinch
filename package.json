@@ -9,7 +9,9 @@
     "package": "electron-forge package",
     "make": "electron-forge make"
   },
-  "keywords": [],
+  "keywords": [
+    "electron"
+  ],
   "author": "Niall Eccles",
   "license": "ISC",
   "dependencies": {
