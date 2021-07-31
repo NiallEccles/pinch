@@ -1,5 +1,7 @@
 # Pinch ![pinching hand emoji](https://nialleccles-github.s3.eu-west-1.amazonaws.com/1f90f-36x36.png)
 
+A colour picker built with Electron.
+
 ## Default view
 ![Default Screenshot](https://nialleccles-github.s3.eu-west-1.amazonaws.com/default-screenshot.png)
 
